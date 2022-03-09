@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 class Sistema{
   private static Playlist[] playlist = new Playlist[10];
   private static int nPlaylist;
+  private static List<Video> videos = new List<Video>();
+
 
   public static void InserirPlaylist(Playlist obj){
     if(nPlaylist == playlist.Length)
@@ -40,4 +43,32 @@ class Sistema{
   }
   return -1;
     }
+  // listas
+
+
+  
+  public static void InserirVideo(Video obj){
+    videos.Add(obj);
+  }
+  public static List<Video> ListarVideo(){
+    return videos;
+  }
+   public static Video ListarVideo(int id){
+     foreach(Video obj in videos)
+       if(obj.GetId() == id) return obj;
+    return null;
+  }
+  public static void AtualizarVideo(Video obj){
+    Video aux = ListarVideo(obj.GetId());
+    if(aux != null){
+      aux.Setnome(obj.Getnome());
+      aux.SetId(obj.GetId());
+      aux.SetDuracao(obj.GetDuracao());
+      aux.SetIdPlaylist(obj.GetIdPLaylist());
+    }
+  }
+  public static void ExcluirVideo(Video obj){
+    Video aux = ListarVideo(obj.GetId());
+    if(aux != null) videos.Remove(aux);   
+  }
 }
