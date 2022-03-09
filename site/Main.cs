@@ -74,3 +74,51 @@ class Program{
       Console.WriteLine("--- operação realizada com sucesso ------");
   }
 }
+  // lista de videos
+  public static void InserirVideo(){
+    Console.Write("Informe o id: ");
+    int id = int.Parse(Console.ReadLine());
+    Console.Write("Informe Nome do video: ");
+    string nome = Console.ReadLine();
+    Console.Write("Informe a duração do video: ");
+    DateTime duracao = DateTime.Parse(Console.ReadLine());
+
+    ListarPlaylist();
+    Console.Write("Informe o id da Playlist: ");
+    int idPlaylist = int.Parse(Console.ReadLine());
+    
+    Video obj = new Video(id, nome, duracao, idPlaylist);
+    Sistema.InserirVideo(obj);
+    Console.WriteLine("--- operação realizada com sucesso ------");
+  }
+  public static void ListarVideo(){
+    Console.WriteLine("---------- listar as playlists existentes: ");
+    foreach(Video obj in Sistema.ListarVideo())
+      Console.WriteLine(obj);
+    Console.WriteLine("-------------------------");
+  }
+  public static void AtualizarVideo(){
+    Console.Write("Informe o id do video para ser atualizado");
+    int id = int.Parse(Console.ReadLine());
+  
+    Console.Write("Informe Nome do video: ");
+    string nome = Console.ReadLine();
+    Console.Write("Informe a duração do video: ");
+    DateTime duracao = DateTime.Parse(Console.ReadLine());
+    ListarPlaylist();
+    Console.Write("Informe o id da Playlist: ");
+    int idPlaylist = int.Parse(Console.ReadLine());
+  
+      Video obj = new Video(id, nome, duracao, idPlaylist);
+      Sistema.AtualizarVideo(obj);
+      Console.WriteLine("--- operação realizada com sucesso ------");
+  }
+  public static void ExcluirVideo(){
+  Console.Write("Inserir o id: ");
+      int id = int.Parse(Console.ReadLine());
+  
+      Video obj = new Video(id);
+      Sistema.ExcluirVideo(obj);
+      Console.WriteLine("--- operação realizada com sucesso ------");
+  }
+}
