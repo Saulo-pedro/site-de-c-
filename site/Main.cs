@@ -11,6 +11,10 @@ class Program{
           case 2 : ListarPlaylist(); break;
           case 3 : AtualizarPlaylist(); break;
           case 4 : ExcluirPlaylist(); break;
+          case 5 : InserirVideo(); break;
+          case 6 : ListarVideo(); break;
+          case 7 : AtualizarVideo(); break;
+          case 8 : ExcluirVideo(); break;
         }
       }catch(Exception erro) {
         op = -1;
@@ -18,7 +22,6 @@ class Program{
       }
     }while(op != 0);
   }
-
   public static int Menu(){
     Console.WriteLine();
     Console.WriteLine("-------- Escolha uma opção -----");
@@ -26,6 +29,10 @@ class Program{
     Console.WriteLine("02 - Listar as playlists cadastradas");
     Console.WriteLine("03 - Atualizar as playlists cadastradas");
     Console.WriteLine("04 - Excluir uma playlist cadastrada");
+    Console.WriteLine("05 - Inserir um novo video");
+    Console.WriteLine("06 - Listar os videos cadastrados");
+    Console.WriteLine("07 - Atualizar os videos cadastrados");
+    Console.WriteLine("08 - Excluir um video");
     Console.WriteLine("00 - finalizar o sistema");
     Console.WriteLine("--------------------------------");
     Console.Write("opção: ");
@@ -36,12 +43,11 @@ class Program{
   public static void InserirPlaylist(){
     Console.Write("Inserir o id: ");
     int z = int.Parse(Console.ReadLine());
-    Console.Write("Inserir uma nova Playlist: ");
+    Console.Write("Inserir o nome da Playlist: ");
     string x = Console.ReadLine();
-    Console.Write("Inserir uma nova musica: ");
-    string y = Console.ReadLine();
 
-    Playlist obj = new Playlist(x, y, z);
+
+    Playlist obj = new Playlist(x, z);
     Sistema.InserirPlaylist(obj);
     Console.WriteLine("--- operação realizada com sucesso ------");
   }
@@ -54,12 +60,10 @@ class Program{
   public static void AtualizarPlaylist(){
   Console.Write("Inserir o id: ");
       int z = int.Parse(Console.ReadLine());
-      Console.Write("Atualizar uma nova Playlist: ");
+      Console.Write("Atualizar a Playlist: ");
       string x = Console.ReadLine();
-      Console.Write("Atualizar uma nova musica: ");
-      string y = Console.ReadLine();
   
-      Playlist obj = new Playlist(x, y, z);
+      Playlist obj = new Playlist(x, z);
       Sistema.AtualizarPlaylist(obj);
       Console.WriteLine("--- operação realizada com sucesso ------");
   }
@@ -67,13 +71,13 @@ class Program{
   Console.Write("Inserir o id: ");
       int z = int.Parse(Console.ReadLine());
       string x = "";
-      string y = "";
   
-      Playlist obj = new Playlist(x, y, z);
+      Playlist obj = new Playlist(x, z);
       Sistema.ExcluirPlaylist(obj);
       Console.WriteLine("--- operação realizada com sucesso ------");
   }
-}
+
+
   // lista de videos
   public static void InserirVideo(){
     Console.Write("Informe o id: ");
