@@ -7,7 +7,7 @@ class Video{
   private int idPlaylist;
   
   public Video(int id){
-    this.nome = nome;
+    this.id = id;
   }
   public Video(int id, string nome, DateTime duracao, int idPlaylist){
     this.nome = nome;
