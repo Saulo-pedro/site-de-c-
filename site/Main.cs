@@ -2,6 +2,13 @@ using System;
 
 class Program{
   public static void Main(){
+
+    try{
+      Sistema.ArquivosAbrir();
+    }
+    catch(Exception erro){
+      Console.WriteLine(erro.Message);
+    }
     int op = 0;
     do{
       try{
@@ -25,7 +32,15 @@ class Program{
         Console.WriteLine("Erro: " + erro.Message);
       }
     }while(op != 0);
-  }
+    try{
+      Sistema.ArquivosSalvar();
+    }
+    catch(Exception erro){
+      Console.WriteLine(erro.Message);
+    }
+      
+    }
+
   public static int Menu(){
     Console.WriteLine();
     Console.WriteLine("-------- Escolha uma opção -----");
