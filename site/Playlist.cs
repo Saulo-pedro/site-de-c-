@@ -1,10 +1,23 @@
 using System;
 
-class Playlist{
+public class Playlist{
   private int id;
   private string nome;
   private int idCanal;
 
+  public int Id{
+    get => id;
+    set => id = value;
+  }  
+  public string Nome {
+    get => nome;
+    set => nome = value;
+  }
+  public int IdCanal{
+    get => idCanal;
+    set => idCanal = value;
+  }
+  public Playlist() { }
   public Playlist(string nome, int id, int idCanal){
     this.nome = nome;
     this.id = id;
