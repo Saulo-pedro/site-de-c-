@@ -25,8 +25,10 @@ class Sistema{
   }
   public static void AtualizarPlaylist(Playlist obj){
     Playlist aux = ListarPlaylist(obj.GetId());
-    if(aux != null)
+    if(aux != null){
       aux.Setnome(obj.Getnome());
+      aux.SetIdCanal(obj.GetIdCanal());
+    }
   }
   public static void ExcluirPlaylist(Playlist obj){
     int aux = PlaylistIndice(obj.GetId());
@@ -65,6 +67,7 @@ class Sistema{
       aux.SetId(obj.GetId());
       aux.SetDuracao(obj.GetDuracao());
       aux.SetIdPlaylist(obj.GetIdPLaylist());
+      aux.SetIdCanal(obj.GetIdCanal());
     }
   }
   public static void ExcluirVideo(Video obj){
