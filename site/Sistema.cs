@@ -5,7 +5,7 @@ class Sistema{
   private static Playlist[] playlist = new Playlist[10];
   private static int nPlaylist;
   private static List<Video> videos = new List<Video>();
-
+  private static List<Canal> canais = new List<Canal>();
 
   public static void InserirPlaylist(Playlist obj){
     if(nPlaylist == playlist.Length)
@@ -69,6 +69,43 @@ class Sistema{
   }
   public static void ExcluirVideo(Video obj){
     Video aux = ListarVideo(obj.GetId());
-    if(aux != null) videos.Remove(aux);   
+    if (aux != null) videos.Remove(aux);   
+  }
+
+  // Canal
+
+  
+  public static void InserirCanal(Canal obj){
+    int id = 0;
+    foreach(Canal aux in canais)
+      if(aux.Id > id) id = aux.Id;
+    obj.Id = id + 1;
+    canais.Add(obj);
+  }
+  public static List<Canal> ListarCanal(){
+    return canais;
+  }
+  public static List<Video> ListarVideo(Canal canal){
+    List<Video> r = new List<Video>();
+    foreach(Video obj in videos)
+      if(obj.GetIdCanal() == canal.Id)
+        r.Add(obj);
+      return r;
+    
+  }
+   public static Canal ListarCanal(int id){
+     foreach(Canal obj in canais)
+       if(obj.Id == id) return obj;
+    return null;
+  }
+  public static void AtualizarCanal(Canal obj){
+    Canal aux = ListarCanal(obj.Id);
+    if(aux != null){
+      aux.Nome = obj.Nome;
+    }
+  }
+  public static void ExcluirCanal(Canal obj){
+    Canal aux = ListarCanal(obj.Id);
+    if (aux != null) canais.Remove(aux);   
   }
 }
