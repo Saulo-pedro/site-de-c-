@@ -1,11 +1,37 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using System.Text;
 
 class Sistema{
   private static Playlist[] playlist = new Playlist[10];
   private static int nPlaylist;
   private static List<Video> videos = new List<Video>();
   private static List<Canal> canais = new List<Canal>();
+
+  public static void ArquivosAbrir(){
+    Arquivo <Playlist[]> f1 = new Arquivo<Playlist[]>();
+    playlist = f1.Abrir("./playlist.xml");
+    nPlaylist = playlist.Length;
+
+    Arquivo <List<Video>> f2 = new Arquivo<List<Video>>();
+    videos = f2.Abrir("./videos.xml");
+
+    Arquivo <List<Canal>> f3 = new Arquivo<List<Canal>>();
+    canais = f3.Abrir("./canais.xml");
+  }
+  public static void ArquivosSalvar(){
+    Arquivo <Playlist[]> f1 = new Arquivo<Playlist[]>();
+    f1.Salvar("./playlist.xml",ListarPlaylist()); 
+
+    Arquivo <List<Video>> f2 = new Arquivo<List<Video>>();
+    f2.Salvar("./videos.xml", videos);
+
+    Arquivo <List<Canal>> f3 = new Arquivo<List<Canal>>();
+    f3.Salvar("./canais.xml", canais);
+    
+  }
 
   public static void InserirPlaylist(Playlist obj){
     if(nPlaylist == playlist.Length)
