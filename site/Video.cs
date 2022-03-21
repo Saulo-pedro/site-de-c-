@@ -1,11 +1,33 @@
 using System;
 
-class Video{
+public class Video{
   private int id;
   private string nome;
   private DateTime duracao;
   private int idPlaylist;
   private int idCanal;
+
+  public int Id{
+    get => id;
+    set => id = value;
+  }  
+  public string Nome {
+    get => nome;
+    set => nome = value;
+  }
+  public DateTime Duracao {
+    get => duracao;
+    set => duracao = value;
+  }
+  public int IdCanal{
+    get => idCanal;
+    set => idCanal = value;
+  }
+  public int IdPlaylist{
+    get => idPlaylist;
+    set => idPlaylist = value;
+  }
+  public Video(){ }
   
   public Video(int id){
     this.id = id;
@@ -49,6 +71,6 @@ class Video{
     return idCanal;
   }
   public override string ToString(){
-    return $"{id} - {nome} - {duracao: HH:mm:ss} - {idPlaylist} - {idCanal}";
+    return $"{id} - {nome} - {duracao: HH:mm:ss} - {idPlaylist} - {idCanal} -";
   }
 }
