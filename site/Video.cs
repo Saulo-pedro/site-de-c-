@@ -5,15 +5,18 @@ class Video{
   private string nome;
   private DateTime duracao;
   private int idPlaylist;
+  private int idCanal;
   
   public Video(int id){
     this.id = id;
   }
-  public Video(int id, string nome, DateTime duracao, int idPlaylist){
+  public Video(int id, string nome, DateTime duracao, int idPlaylist, int idCanal){
     this.nome = nome;
     this.duracao = duracao;
     this.id = id;
     this.idPlaylist = idPlaylist;
+    this.idCanal = idCanal;
+
   }
    public void Setnome(string nome){
     this.nome = nome;
@@ -39,7 +42,13 @@ class Video{
   public DateTime GetDuracao(){
     return duracao;
   }
+  public void SetIdCanal(int idCanal){
+    this.idCanal = idCanal;
+  }
+  public int GetIdCanal(){
+    return idCanal;
+  }
   public override string ToString(){
-    return $"{id} - {nome} - {duracao: HH:mm:ss} - {idPlaylist}";
+    return $"{id} - {nome} - {duracao: HH:mm:ss} - {idPlaylist} - {idCanal}";
   }
 }
